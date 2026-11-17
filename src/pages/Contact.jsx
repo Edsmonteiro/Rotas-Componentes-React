@@ -1,0 +1,9 @@
+
+import { useState } from 'react';
+import { ArrowRight, CheckCircle2, Mail, MapPin } from 'lucide-react';
+export default function Contact(){const[nome,setNome]=useState('');const[email,setEmail]=useState('');const[mensagem,setMensagem]=useState('');const[enviado,setEnviado]=useState(false);
+function enviar(e){e.preventDefault();if(!nome.trim()||!email.trim()||!mensagem.trim())return;setEnviado(true);setNome('');setEmail('');setMensagem('');}
+return <div className="route-page"><div className="page-kicker">FALE COM A GENTE / CONTATO</div><h1 className="inner-title">Boas conversas começam <em>aqui.</em></h1><p className="lead">Este formulário demonstra estados e navegação, sem envio real para um servidor.</p><div className="contact-layout">
+<section className="panel contact-form"><h2>Deixe sua mensagem</h2><p className="muted">Vamos conhecer suas ideias.</p><form onSubmit={enviar}><label>Seu nome<input required value={nome} onChange={e=>{setNome(e.target.value);setEnviado(false)}} placeholder="Seu nome completo"/></label><label>E-mail<input type="email" required value={email} onChange={e=>{setEmail(e.target.value);setEnviado(false)}} placeholder="seu@email.com"/></label><label>Mensagem<textarea required value={mensagem} onChange={e=>{setMensagem(e.target.value);setEnviado(false)}} placeholder="O que gostaria de compartilhar?"/></label><button className="btn" type="submit">Simular envio <ArrowRight size={16}/></button>{enviado&&<p className="notice" role="status"><CheckCircle2 size={17}/> Mensagem registrada nesta página. Nenhum e-mail foi enviado.</p>}</form></section>
+<aside className="contact-info"><div className="panel info-item"><Mail size={23}/><div><b>Contato demonstrativo</b><p>Este projeto não possui integração com serviço de e-mail.</p></div></div><div className="panel info-item"><MapPin size={23}/><div><b>Onde explorar?</b><p>Em qualquer lugar com acesso à internet.</p></div></div></aside>
+</div></div>}

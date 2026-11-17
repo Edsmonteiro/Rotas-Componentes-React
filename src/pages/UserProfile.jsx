@@ -1,0 +1,9 @@
+
+import { ArrowLeft, ArrowRight, BriefcaseBusiness, MapPin, Sparkles } from 'lucide-react';
+import { Link, useParams } from 'react-router-dom';
+import { pessoas } from '../data/people.js';
+export default function UserProfile(){const{id}=useParams();const pessoa=pessoas[id];if(!pessoa)return <div className="route-page"><div className="page-kicker">PERFIL DESCONHECIDO</div><h1 className="inner-title">Perfil não encontrado.</h1><p>Não há um perfil de demonstração para o ID {id}.</p><Link className="btn" to="/">Voltar ao início <ArrowLeft size={15}/></Link></div>;
+return <div className="route-page"><div className="page-kicker">COMUNIDADE / PERFIL #{pessoa.id}</div><h1 className="inner-title">Pessoas que <em>inspiram.</em></h1><p className="lead">O conteúdo muda conforme o parâmetro <code>:id</code> na URL.</p>
+<section className="panel profile-card"><div className="profile-top"><div className="profile-avatar" style={{background:pessoa.cor}}>{pessoa.iniciais}</div><div className="profile-main"><span className="tag">MEMBRO DA COMUNIDADE</span><h2>{pessoa.nome}</h2><p><BriefcaseBusiness size={16}/> {pessoa.papel}</p><p><MapPin size={16}/> {pessoa.cidade}</p></div><Link className="btn light" to="/contact">Entre em contato <ArrowRight size={15}/></Link></div><div className="divider"/><div className="profile-bio"><div><h3>Sobre mim</h3><p>{pessoa.descricao}</p><div className="skills">{pessoa.habilidades.map(h=><span className="tag" key={h}>{h}</span>)}</div></div><div className="profile-numbers"><div><b>{pessoa.projetos}</b><small>Projetos</small></div><div><b>{pessoa.contribuicoes}</b><small>Contribuições</small></div></div></div></section>
+<p className="profile-quote"><Sparkles size={17}/> “{pessoa.frase}”</p><div className="other-users"><b>Conheça mais perfis</b><div>{Object.values(pessoas).filter(p=>p.id!==id).map(p=><Link className="user-mini" key={p.id} to={'/user/'+p.id}>{p.nome}<ArrowRight size={14}/></Link>)}</div></div>
+</div>}

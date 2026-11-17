@@ -1,0 +1,7 @@
+
+import { ArrowRight, Boxes, Gauge, Layers, Route, ShieldCheck } from 'lucide-react';
+import { Link } from 'react-router-dom';
+const itens=[{icon:Route,title:'React Router',desc:'Cada URL aponta para um componente de página.'},{icon:Layers,title:'Layout compartilhado',desc:'Header, Sidebar e Footer sem repetição de código.'},{icon:Gauge,title:'Lazy loading',desc:'React.lazy e Suspense carregam páginas sob demanda.'},{icon:ShieldCheck,title:'Página 404',desc:'Orientação em endereços inexistentes.'}];
+export default function About(){return <div className="route-page"><div className="page-kicker">SOBRE O ORBIT / QUEM SOMOS</div><h1 className="inner-title">Uma experiência feita para <em>explorar.</em></h1><p className="lead">Orbit é um site de demonstração para aprender navegação entre páginas, componentes e carregamento sob demanda no React.</p>
+<div className="panel about-banner"><Boxes size={40}/><div><div className="small-label">A IDEIA POR TRÁS DO PROJETO</div><h2>Componentes que se conectam.</h2><p>Mais do que páginas, uma experiência coesa e organizada.</p></div></div>
+<div className="eyebrow">TECNOLOGIAS EM AÇÃO</div><h2>O que acontece nos bastidores?</h2><div className="about-grid">{itens.map(({icon:Icon,title,desc})=><div className="panel about-item" key={title}><span className="tile-icon lilac"><Icon size={22}/></span><h3>{title}</h3><p>{desc}</p></div>)}</div><Link className="btn" to="/contact">Falar com a gente <ArrowRight size={16}/></Link></div>}
